@@ -1,6 +1,6 @@
-
 import React, { useState } from 'react';
-import { ChevronRight, ChevronLeft, Sparkles, Rocket, Copy, Check } from 'lucide-react';
+import { ChevronRight, ChevronLeft, Sparkles, Rocket, Copy, Check, ArrowLeft } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const LPPromptGenerator = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -224,6 +224,13 @@ Certifique-se de que a página seja visualmente atrativa, carregue rapidamente e
         <div className="max-w-5xl mx-auto px-6 py-5">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
+              <Link 
+                to="/"
+                className="flex items-center space-x-2 text-blue-600 hover:text-blue-700 transition-colors mr-4"
+              >
+                <ArrowLeft className="w-5 h-5" />
+                <span className="text-sm font-medium">Voltar</span>
+              </Link>
               <div className="relative">
                 <div className="w-12 h-12 bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 rounded-2xl flex items-center justify-center shadow-lg">
                   <Sparkles className="w-7 h-7 text-white animate-pulse" />
