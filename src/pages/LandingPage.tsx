@@ -913,7 +913,7 @@ const LandingPage = () => {
             </a>
             
             <a 
-              href="https://crmapi.notoria.pro/payment-link/6838aca5edf79f50f4afb2ee"
+              href="https://crmapi.notoria.pro/payment-link/6838acceedf79f2b1cafb2f6"
               target="_blank"
               rel="noopener noreferrer"
               className="border-2 border-white text-white px-8 py-4 rounded-2xl text-lg font-bold hover:bg-white/10 transition-all duration-300 flex items-center space-x-3"
