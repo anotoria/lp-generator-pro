@@ -22,8 +22,9 @@ import {
 const LandingPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentQuizStep, setCurrentQuizStep] = useState(0);
-  const [quizAnswers, setQuizAnswers] = useState({});
+  const [quizAnswers, setQuizAnswers] = useState<Record<number, number>>({});
   const [showQuizResult, setShowQuizResult] = useState(false);
+  const [pricingMode, setPricingMode] = useState<'monthly' | 'annual'>('annual');
 
   const quizQuestions = [
     {
@@ -64,7 +65,7 @@ const LandingPage = () => {
     }
   ];
 
-  const handleQuizAnswer = (score) => {
+  const handleQuizAnswer = (score: number) => {
     const newAnswers = { ...quizAnswers, [currentQuizStep]: score };
     setQuizAnswers(newAnswers);
     
@@ -105,7 +106,7 @@ const LandingPage = () => {
     }
   };
 
-  const scrollToSection = (id) => {
+  const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     setIsMenuOpen(false);
   };
@@ -210,11 +211,11 @@ const LandingPage = () => {
           
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8">
             <span className="bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent">
-              De 8 Horas para
+              De 48 Horas para
             </span>
             <br />
             <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent">
-              2 Minutos
+              30 Minutos
             </span>
             <br />
             <span className="bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent">
@@ -289,7 +290,7 @@ const LandingPage = () => {
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-red-500 rounded-full mt-2"></div>
-                  <p className="text-gray-700"><strong>8+ horas</strong> para criar uma LP básica</p>
+                  <p className="text-gray-700"><strong>48+ horas</strong> para criar uma LP básica</p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-red-500 rounded-full mt-2"></div>
@@ -326,7 +327,7 @@ const LandingPage = () => {
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
-                  <p className="text-gray-700"><strong>2 minutos</strong> para gerar prompt perfeito</p>
+                  <p className="text-gray-700"><strong>30 minutos</strong> para gerar prompt perfeito</p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
@@ -448,7 +449,7 @@ const LandingPage = () => {
                   </div>
                   <div>
                     <h4 className="font-bold mb-1">Responda 9 Perguntas Estratégicas</h4>
-                    <p className="text-white/90">Em 2 minutos você fornece todas as informações necessárias</p>
+                    <p className="text-white/90">Em 15 minutos você fornece todas as informações necessárias</p>
                   </div>
                 </div>
 
@@ -468,7 +469,7 @@ const LandingPage = () => {
                   </div>
                   <div>
                     <h4 className="font-bold mb-1">Cole no Lovable e Pronto!</h4>
-                    <p className="text-white/90">Landing Page completa e perfeita em menos de 5 minutos</p>
+                    <p className="text-white/90">Landing Page completa e perfeita em menos de 10 minutos</p>
                   </div>
                 </div>
               </div>
@@ -504,7 +505,7 @@ const LandingPage = () => {
               {
                 icon: <Zap className="w-8 h-8 text-yellow-500" />,
                 title: "Velocidade Extrema",
-                description: "De briefing à LP finalizada em menos de 5 minutos, não 8 horas"
+                description: "De briefing à LP finalizada em menos de 10 minutos, não 48 horas"
               },
               {
                 icon: <Target className="w-8 h-8 text-green-500" />,
@@ -692,130 +693,112 @@ const LandingPage = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {/* Free Trial */}
-            <div className="bg-white rounded-2xl shadow-lg border-2 border-gray-200 p-8 text-center">
-              <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
-                <Rocket className="w-8 h-8 text-blue-600" />
+          <div className="max-w-2xl mx-auto">
+            {/* Pricing Toggle */}
+            <div className="flex justify-center mb-12">
+              <div className="bg-gray-100 p-1 rounded-2xl inline-flex">
+                <button
+                  onClick={() => setPricingMode('monthly')}
+                  className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
+                    pricingMode === 'monthly'
+                      ? 'bg-white text-gray-900 shadow-md'
+                      : 'text-gray-600 hover:text-gray-900'
+                  }`}
+                >
+                  Mensal
+                </button>
+                <button
+                  onClick={() => setPricingMode('annual')}
+                  className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 relative ${
+                    pricingMode === 'annual'
+                      ? 'bg-white text-gray-900 shadow-md'
+                      : 'text-gray-600 hover:text-gray-900'
+                  }`}
+                >
+                  Anual
+                  <span className="absolute -top-1 -right-1 bg-green-500 text-white text-xs px-2 py-1 rounded-full">
+                    63% OFF
+                  </span>
+                </button>
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-900">Teste Gratuito</h3>
-              <div className="text-4xl font-bold mb-2 text-blue-600">R$ 0</div>
-              <div className="text-gray-500 mb-6">7 dias completos</div>
-              
-              <ul className="space-y-3 mb-8 text-left">
-                <li className="flex items-center">
-                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                  <span>Acesso completo à ferramenta</span>
-                </li>
-                <li className="flex items-center">
-                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                  <span>Até 10 prompts gerados</span>
-                </li>
-                <li className="flex items-center">
-                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                  <span>Suporte por email</span>
-                </li>
-              </ul>
-
-              <a 
-                href="https://crmapi.notoria.pro/payment-link/6838aca5edf79f50f4afb2ee"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition-colors"
-              >
-                Começar Teste Gratuito
-              </a>
             </div>
 
-            {/* Monthly Plan */}
-            <div className="bg-white rounded-2xl shadow-lg border-2 border-purple-200 p-8 text-center relative">
+            {/* Single Pricing Card */}
+            <div className="bg-gradient-to-br from-white to-blue-50 rounded-2xl shadow-2xl border-2 border-blue-200 p-8 text-center relative overflow-hidden">
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                <div className="bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
-                  MAIS POPULAR
+                <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full text-sm font-semibold">
+                  7 DIAS GRÁTIS
                 </div>
               </div>
               
-              <div className="bg-purple-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
-                <Zap className="w-8 h-8 text-purple-600" />
+              <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 mt-4">
+                <Rocket className="w-10 h-10 text-white" />
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-900">Plano Mensal</h3>
-              <div className="text-4xl font-bold mb-2 text-purple-600">R$ 9,90</div>
-              <div className="text-gray-500 mb-6">por mês</div>
               
-              <ul className="space-y-3 mb-8 text-left">
+              <h3 className="text-3xl font-bold mb-4 text-gray-900">LP Generator Pro</h3>
+              
+              {pricingMode === 'monthly' ? (
+                <div className="mb-6">
+                  <div className="text-5xl font-bold text-blue-600 mb-2">
+                    <span className="line-through text-gray-400 text-3xl">R$ 39</span>
+                    <span className="ml-2">R$ 9,90</span>
+                  </div>
+                  <div className="text-gray-500">por mês</div>
+                </div>
+              ) : (
+                <div className="mb-6">
+                  <div className="text-5xl font-bold text-green-600 mb-2">
+                    <span className="line-through text-gray-400 text-3xl">R$ 390</span>
+                    <span className="ml-2">R$ 99</span>
+                  </div>
+                  <div className="text-gray-500">por ano</div>
+                  <div className="text-green-600 font-semibold mt-1">
+                    Economia de R$ 291 (63% OFF)
+                  </div>
+                </div>
+              )}
+              
+              <ul className="space-y-4 mb-8 text-left">
                 <li className="flex items-center">
-                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
+                  <CheckCircle className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
                   <span>Prompts ilimitados</span>
                 </li>
                 <li className="flex items-center">
-                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
+                  <CheckCircle className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
                   <span>Atualizações automáticas</span>
                 </li>
                 <li className="flex items-center">
-                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                  <span>Suporte prioritário</span>
-                </li>
-                <li className="flex items-center">
-                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
+                  <CheckCircle className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
                   <span>Templates exclusivos</span>
                 </li>
-              </ul>
-
-              <a 
-                href="https://crmapi.notoria.pro/payment-link/6838aca5edf79f50f4afb2ee"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full bg-purple-600 text-white py-3 rounded-xl font-semibold hover:bg-purple-700 transition-colors"
-              >
-                Escolher Plano Mensal
-              </a>
-            </div>
-
-            {/* Annual Plan */}
-            <div className="bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl shadow-lg border-2 border-green-200 p-8 text-center relative">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                <div className="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
-                  MELHOR VALOR
-                </div>
-              </div>
-              
-              <div className="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
-                <Award className="w-8 h-8 text-green-600" />
-              </div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-900">Plano Anual</h3>
-              <div className="text-4xl font-bold mb-1 text-green-600">R$ 99</div>
-              <div className="text-sm text-green-700 mb-2">
-                <span className="line-through text-gray-400">R$ 267</span> 
-                <span className="font-bold"> (63% OFF)</span>
-              </div>
-              <div className="text-gray-500 mb-6">por ano</div>
-              
-              <ul className="space-y-3 mb-8 text-left">
                 <li className="flex items-center">
-                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                  <span>Tudo do plano mensal</span>
-                </li>
-                <li className="flex items-center">
-                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                  <span>Consultoria exclusiva (1h)</span>
-                </li>
-                <li className="flex items-center">
-                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                  <span>Grupo VIP no WhatsApp</span>
-                </li>
-                <li className="flex items-center">
-                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
+                  <CheckCircle className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
                   <span>Novos recursos em primeira mão</span>
                 </li>
+                {pricingMode === 'annual' && (
+                  <>
+                    <li className="flex items-center">
+                      <CheckCircle className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
+                      <span>Consultoria exclusiva (1h)</span>
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
+                      <span>Grupo VIP no WhatsApp</span>
+                    </li>
+                  </>
+                )}
               </ul>
 
               <a 
-                href="https://crmapi.notoria.pro/payment-link/6838acceedf79f2b1cafb2f6"
+                href={pricingMode === 'monthly' 
+                  ? "https://crmapi.notoria.pro/payment-link/6838aca5edf79f50f4afb2ee"
+                  : "https://crmapi.notoria.pro/payment-link/6838acceedf79f2b1cafb2f6"
+                }
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full bg-green-600 text-white py-3 rounded-xl font-semibold hover:bg-green-700 transition-colors"
+                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 rounded-xl font-bold text-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105 inline-block"
               >
-                Garantir Desconto Anual
+                Começar 7 Dias Grátis
               </a>
             </div>
           </div>
@@ -848,7 +831,7 @@ const LandingPage = () => {
             {[
               {
                 question: "Como exatamente a ferramenta funciona?",
-                answer: "Você responde 9 perguntas estratégicas sobre o projeto (leva 2 minutos), nossa IA gera um prompt otimizado baseado em nossa metodologia comprovada, você copia e cola no Lovable, e em 5 minutos tem uma LP completa e profissional."
+                answer: "Você responde 9 perguntas estratégicas sobre o projeto (leva 10 minutos), nossa IA gera um prompt otimizado baseado em nossa metodologia comprovada, você copia e cola no Lovable, e em menos de 15 minutos tem uma LP completa e profissional."
               },
               {
                 question: "Preciso ter conhecimento técnico para usar?",
@@ -903,7 +886,7 @@ const LandingPage = () => {
               <div>
                 <div className="text-3xl font-bold mb-2">⏱️</div>
                 <div className="text-lg font-semibold">95% Menos Tempo</div>
-                <div className="text-sm opacity-75">De 8 horas para 5 minutos</div>
+                <div className="text-sm opacity-75">De 48 horas para 30 minutos</div>
               </div>
               <div>
                 <div className="text-3xl font-bold mb-2">💰</div>
@@ -961,17 +944,6 @@ const LandingPage = () => {
                 A ferramenta definitiva para criar Landing Pages perfeitas no Lovable. 
                 Transformamos sua metodologia em resultados excepcionais.
               </p>
-              <div className="flex space-x-4">
-                <div className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors cursor-pointer">
-                  <span className="text-sm">📧</span>
-                </div>
-                <div className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors cursor-pointer">
-                  <span className="text-sm">💬</span>
-                </div>
-                <div className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors cursor-pointer">
-                  <span className="text-sm">📱</span>
-                </div>
-              </div>
             </div>
 
             <div>
