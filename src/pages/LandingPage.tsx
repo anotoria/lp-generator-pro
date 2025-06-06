@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { 
   ChevronRight, 
@@ -24,7 +23,6 @@ const LandingPage = () => {
   const [currentQuizStep, setCurrentQuizStep] = useState(0);
   const [quizAnswers, setQuizAnswers] = useState<Record<number, number>>({});
   const [showQuizResult, setShowQuizResult] = useState(false);
-  const [pricingMode, setPricingMode] = useState<'monthly' | 'annual'>('annual');
 
   const quizQuestions = [
     {
@@ -137,14 +135,14 @@ const LandingPage = () => {
               <button onClick={() => scrollToSection('funcionalidades')} className="text-gray-700 hover:text-blue-600 transition-colors">
                 Funcionalidades
               </button>
-              <button onClick={() => scrollToSection('precos')} className="text-gray-700 hover:text-blue-600 transition-colors">
+              <button onClick={() => scrollToSection('acesso-sistema')} className="text-gray-700 hover:text-blue-600 transition-colors">
                 Preços
               </button>
               <button onClick={() => scrollToSection('faq')} className="text-gray-700 hover:text-blue-600 transition-colors">
                 FAQ
               </button>
               <a 
-                href="https://crmapi.notoria.pro/payment-link/6838aca5edf79f50f4afb2ee"
+                href="https://app--generator-pro-1cbf0d2b.base44.app/login?from_url=https://app--generator-pro-1cbf0d2b.base44.app/&app_id=68434c42374edee11cbf0d2b"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all duration-300 transform hover:scale-105"
@@ -175,14 +173,14 @@ const LandingPage = () => {
                 <button onClick={() => scrollToSection('funcionalidades')} className="text-left text-gray-700 hover:text-blue-600 transition-colors">
                   Funcionalidades
                 </button>
-                <button onClick={() => scrollToSection('precos')} className="text-left text-gray-700 hover:text-blue-600 transition-colors">
+                <button onClick={() => scrollToSection('acesso-sistema')} className="text-left text-gray-700 hover:text-blue-600 transition-colors">
                   Preços
                 </button>
                 <button onClick={() => scrollToSection('faq')} className="text-left text-gray-700 hover:text-blue-600 transition-colors">
                   FAQ
                 </button>
                 <a 
-                  href="https://crmapi.notoria.pro/payment-link/6838aca5edf79f50f4afb2ee"
+                  href="https://app--generator-pro-1cbf0d2b.base44.app/login?from_url=https://app--generator-pro-1cbf0d2b.base44.app/&app_id=68434c42374edee11cbf0d2b"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 text-white px-6 py-2 rounded-full text-center hover:shadow-lg transition-all duration-300"
@@ -231,12 +229,12 @@ const LandingPage = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
             <a 
-              href="https://crmapi.notoria.pro/payment-link/6838aca5edf79f50f4afb2ee"
+              href="https://app--generator-pro-1cbf0d2b.base44.app/login?from_url=https://app--generator-pro-1cbf0d2b.base44.app/&app_id=68434c42374edee11cbf0d2b"
               target="_blank"
               rel="noopener noreferrer"
               className="group bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 text-white px-8 py-4 rounded-2xl text-lg font-semibold hover:shadow-2xl transition-all duration-300 transform hover:scale-105 flex items-center space-x-3"
             >
-              <span>🚀 Começar Teste Gratuito</span>
+              <span>🚀 Acessar o Sistema</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
             
@@ -654,15 +652,6 @@ const LandingPage = () => {
                   >
                     🎯 Plano Anual (63% OFF) - R$ 99
                   </a>
-                  
-                  <a 
-                    href="https://crmapi.notoria.pro/payment-link/6838aca5edf79f50f4afb2ee"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="border-2 border-blue-500 text-blue-600 px-8 py-4 rounded-2xl font-bold hover:bg-blue-50 transition-all duration-300"
-                  >
-                    🚀 Teste 7 Dias Grátis
-                  </a>
                 </div>
 
                 <button
@@ -681,7 +670,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Pricing Section */}
+      {/* Pricing Section - Simplified */}
       <section id="precos" className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -693,118 +682,28 @@ const LandingPage = () => {
             </p>
           </div>
 
-          <div className="max-w-2xl mx-auto">
-            {/* Pricing Toggle */}
-            <div className="flex justify-center mb-12">
-              <div className="bg-gray-100 p-1 rounded-2xl inline-flex">
-                <button
-                  onClick={() => setPricingMode('monthly')}
-                  className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
-                    pricingMode === 'monthly'
-                      ? 'bg-white text-gray-900 shadow-md'
-                      : 'text-gray-600 hover:text-gray-900'
-                  }`}
-                >
-                  Mensal
-                </button>
-                <button
-                  onClick={() => setPricingMode('annual')}
-                  className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 relative ${
-                    pricingMode === 'annual'
-                      ? 'bg-white text-gray-900 shadow-md'
-                      : 'text-gray-600 hover:text-gray-900'
-                  }`}
-                >
-                  Anual
-                  <span className="absolute -top-1 -right-1 bg-green-500 text-white text-xs px-2 py-1 rounded-full">
-                    63% OFF
-                  </span>
-                </button>
-              </div>
-            </div>
-
-            {/* Single Pricing Card */}
-            <div className="bg-gradient-to-br from-white to-blue-50 rounded-2xl shadow-2xl border-2 border-blue-200 p-8 text-center relative overflow-hidden">
-              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
-                <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full text-sm font-semibold whitespace-nowrap">
-                  7 DIAS GRÁTIS
-                </div>
-              </div>
-              
-              <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 mt-6">
+          <div className="max-w-2xl mx-auto text-center">
+            <div className="bg-gradient-to-br from-white to-blue-50 rounded-2xl shadow-2xl border-2 border-blue-200 p-8 mb-8">
+              <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
                 <Rocket className="w-10 h-10 text-white" />
               </div>
               
-              <h3 className="text-3xl font-bold mb-4 text-gray-900">LP Generator Pro</h3>
-              
-              {pricingMode === 'monthly' ? (
-                <div className="mb-6">
-                  <div className="text-5xl font-bold text-blue-600 mb-2">
-                    <span className="line-through text-gray-400 text-3xl">R$ 39</span>
-                    <span className="ml-2">R$ 9,90</span>
-                  </div>
-                  <div className="text-gray-500">por mês</div>
-                </div>
-              ) : (
-                <div className="mb-6">
-                  <div className="text-5xl font-bold text-green-600 mb-2">
-                    <span className="line-through text-gray-400 text-3xl">R$ 390</span>
-                    <span className="ml-2">R$ 99</span>
-                  </div>
-                  <div className="text-gray-500">por ano</div>
-                  <div className="text-green-600 font-semibold mt-1">
-                    Economia de R$ 291 (63% OFF)
-                  </div>
-                </div>
-              )}
-              
-              <ul className="space-y-4 mb-8 text-left">
-                <li className="flex items-center">
-                  <CheckCircle className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
-                  <span>Prompts ilimitados</span>
-                </li>
-                <li className="flex items-center">
-                  <CheckCircle className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
-                  <span>Atualizações automáticas</span>
-                </li>
-                <li className="flex items-center">
-                  <CheckCircle className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
-                  <span>Templates exclusivos</span>
-                </li>
-                <li className="flex items-center">
-                  <CheckCircle className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
-                  <span>Novos recursos em primeira mão</span>
-                </li>
-                {pricingMode === 'annual' && (
-                  <>
-                    <li className="flex items-center">
-                      <CheckCircle className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
-                      <span>Consultoria em Grupo</span>
-                    </li>
-                    <li className="flex items-center">
-                      <CheckCircle className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
-                      <span>Comunidade no WhatsApp</span>
-                    </li>
-                  </>
-                )}
-              </ul>
+              <h3 className="text-3xl font-bold mb-4 text-gray-900">Comece Sua Revolução Agora</h3>
+              <p className="text-lg text-gray-600 mb-8">
+                Acesse nossa plataforma e transforme sua forma de criar Landing Pages hoje mesmo!
+              </p>
 
               <a 
-                href={pricingMode === 'monthly' 
-                  ? "https://crmapi.notoria.pro/payment-link/6838aca5edf79f50f4afb2ee"
-                  : "https://crmapi.notoria.pro/payment-link/6838acceedf79f2b1cafb2f6"
-                }
+                href="https://app--generator-pro-1cbf0d2b.base44.app/login?from_url=https://app--generator-pro-1cbf0d2b.base44.app/&app_id=68434c42374edee11cbf0d2b"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 rounded-xl font-bold text-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105 inline-block"
               >
-                Começar 7 Dias Grátis
+                🚀 Eu quero começar agora
               </a>
             </div>
-          </div>
 
-          <div className="text-center mt-12">
-            <div className="bg-yellow-50 border-2 border-yellow-200 rounded-xl p-6 max-w-3xl mx-auto">
+            <div className="bg-yellow-50 border-2 border-yellow-200 rounded-xl p-6">
               <h4 className="text-xl font-bold text-yellow-800 mb-2">💰 Garantia Total de 30 Dias</h4>
               <p className="text-yellow-700">
                 Se você não economizar pelo menos 10 horas no primeiro mês, devolvemos 100% do seu dinheiro. 
@@ -871,7 +770,72 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* Access System Section - New */}
+      <section id="acesso-sistema" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-purple-50 to-blue-50">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Acesse a <span className="text-blue-600">Plataforma</span>
+          </h2>
+          <p className="text-xl text-gray-600 mb-12">
+            Entre no sistema e escolha o plano que melhor se adapta às suas necessidades. 
+            Você pode começar explorando gratuitamente!
+          </p>
+
+          <div className="bg-white rounded-2xl shadow-2xl p-8 border border-gray-100 mb-8">
+            <div className="mb-8">
+              <div className="text-6xl mb-4">🍭</div>
+              <h3 className="text-3xl font-bold text-gray-900 mb-4">
+                Mais Barato que uma Bala!
+              </h3>
+              <p className="text-lg text-gray-600 mb-6">
+                Por apenas <span className="font-bold text-green-600">R$ 0,53 centavos por dia</span> você tem acesso 
+                a uma ferramenta que vai revolucionar sua produtividade. 
+              </p>
+              <p className="text-gray-600 mb-8">
+                Isso é menos que o preço de uma bala, um chiclete ou aquele docinho que você compra na padaria. 
+                Mas o retorno? Esse pode chegar a milhares de reais em tempo economizado! 🚀
+              </p>
+            </div>
+
+            <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-xl p-6 mb-8">
+              <h4 className="text-xl font-bold text-gray-900 mb-3">Como Funciona:</h4>
+              <div className="text-left space-y-2">
+                <p className="flex items-center text-gray-700">
+                  <span className="text-green-500 mr-2">✓</span>
+                  Acesse a plataforma gratuitamente
+                </p>
+                <p className="flex items-center text-gray-700">
+                  <span className="text-green-500 mr-2">✓</span>
+                  Explore todas as funcionalidades
+                </p>
+                <p className="flex items-center text-gray-700">
+                  <span className="text-green-500 mr-2">✓</span>
+                  Escolha um plano apenas quando se sentir confortável
+                </p>
+                <p className="flex items-center text-gray-700">
+                  <span className="text-green-500 mr-2">✓</span>
+                  Ou continue usando a versão gratuita se preferir
+                </p>
+              </div>
+            </div>
+
+            <a 
+              href="https://app--generator-pro-1cbf0d2b.base44.app/login?from_url=https://app--generator-pro-1cbf0d2b.base44.app/&app_id=68434c42374edee11cbf0d2b"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 rounded-xl font-bold text-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105 inline-block"
+            >
+              🎯 Acessar a Plataforma Agora
+            </a>
+          </div>
+
+          <p className="text-sm text-gray-500">
+            Sem compromisso • Sem cartão de crédito • Comece agora mesmo
+          </p>
+        </div>
+      </section>
+
+      {/* CTA Section - Simplified */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-600 via-purple-600 to-cyan-600">
         <div className="max-w-4xl mx-auto text-center text-white">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -903,23 +867,13 @@ const LandingPage = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a 
-              href="https://crmapi.notoria.pro/payment-link/6838acceedf79f2b1cafb2f6"
+              href="https://app--generator-pro-1cbf0d2b.base44.app/login?from_url=https://app--generator-pro-1cbf0d2b.base44.app/&app_id=68434c42374edee11cbf0d2b"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-white text-blue-600 px-8 py-4 rounded-2xl text-lg font-bold hover:shadow-2xl transition-all duration-300 transform hover:scale-105 flex items-center space-x-3"
             >
               <Award className="w-6 h-6" />
-              <span>Plano Anual - 63% OFF (R$ 99)</span>
-            </a>
-            
-            <a 
-              href="https://crmapi.notoria.pro/payment-link/6838acceedf79f2b1cafb2f6"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border-2 border-white text-white px-8 py-4 rounded-2xl text-lg font-bold hover:bg-white/10 transition-all duration-300 flex items-center space-x-3"
-            >
-              <Rocket className="w-6 h-6" />
-              <span>Teste 7 Dias Grátis</span>
+              <span>Acessar o Sistema</span>
             </a>
           </div>
 
@@ -950,7 +904,7 @@ const LandingPage = () => {
               <h4 className="text-lg font-semibold mb-4">Produto</h4>
               <ul className="space-y-2 text-gray-400">
                 <li><a href="#funcionalidades" className="hover:text-white transition-colors">Funcionalidades</a></li>
-                <li><a href="#precos" className="hover:text-white transition-colors">Preços</a></li>
+                <li><a href="#acesso-sistema" className="hover:text-white transition-colors">Preços</a></li>
                 <li><a href="#quiz" className="hover:text-white transition-colors">Avaliação Gratuita</a></li>
                 <li><a href="#faq" className="hover:text-white transition-colors">FAQ</a></li>
               </ul>
