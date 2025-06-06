@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronRight, ChevronLeft, Sparkles, Rocket, Copy, Check, ArrowLeft } from 'lucide-react';
+import { ChevronRight, ChevronLeft, Sparkles, Rocket, Copy, Check, ArrowLeft, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const LPPromptGenerator = () => {
@@ -40,7 +40,8 @@ const LPPromptGenerator = () => {
       field: "copy",
       type: "textarea",
       placeholder: "Headlines, subtítulos, descrições, depoimentos, CTAs, textos dos botões...",
-      icon: "✍️"
+      icon: "✍️",
+      showCopyButton: true
     },
     {
       title: "Elementos Necessários",
@@ -277,6 +278,24 @@ Certifique-se de que a página seja visualmente atrativa, carregue rapidamente e
               <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
                 {currentStepData.subtitle}
               </p>
+              
+              {/* Copy Button for Copy step */}
+              {currentStepData.showCopyButton && (
+                <div className="mt-6 p-6 bg-blue-50/50 rounded-2xl border border-blue-200/50">
+                  <p className="text-gray-600 mb-4">
+                    Caso não tenha uma copy pronta você pode usar a nossa solução de CopyMaster
+                  </p>
+                  <a
+                    href="https://app--copy-master-ac8cfe50.base44.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 font-medium"
+                  >
+                    <span>Quero criar uma copy</span>
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                </div>
+              )}
             </div>
 
             <div className="space-y-8">
